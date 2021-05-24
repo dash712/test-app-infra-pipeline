@@ -62,6 +62,20 @@ pipeline {
                 }
             }
         }
+        stage('OPA'){
+            steps {
+                script{
+                    sh'''#!/bin/bash
+                    ###pulling down binary for opa.  if there is a more appropriate place to peform this, shift to there.
+                    set -e
+                    curl -L -o opa https://openpolicyagent.org/downloads/v0.28.0/opa_linux_amd64
+                    chmod +x ./opa
+                    '''
+                }
+
+            }
+
+        }
         stage('SG'){
             when {
                 expression { params.SG == true}
