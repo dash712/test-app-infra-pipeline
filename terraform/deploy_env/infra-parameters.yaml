@@ -1,0 +1,8 @@
+---
+    PARAMETERS:
+      APP_NAME: test-app
+      ENVIRONMENT: dev
+      DEPLOYMENT_REGION: "us-east-1"
+      SG: true
+      RDS: false
+      IAM: false 
