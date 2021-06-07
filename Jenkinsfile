@@ -14,7 +14,7 @@ node {
     ])
 }
 pipeline {
-    agent { label 'any' }
+    agent any
     options {
         buildDiscarder(logRotator(numToKeepStr:'100'))
         timeout(time: 30, unit: 'MINUTES')
@@ -23,7 +23,6 @@ pipeline {
     }
     stages {
         stage('Initialization') {
-            agent { label 'any'}
             steps {
                 deleteDir()
                 script{
