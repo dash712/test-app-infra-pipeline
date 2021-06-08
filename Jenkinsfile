@@ -97,16 +97,16 @@ pipeline {
                     case $RUN_TYPE in
 
                     "plan")
-                        /usr/local/bin/terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan -input=false
+                        /usr/local/bin/terraform plan -out=tfplan -input=false
                         ;;
 
                     "apply")
-                        /usr/local/bin/terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan.binary -input=false
+                        /usr/local/bin/terraform plan -out=tfplan.binary -input=false
                         /usr/local/bin/terraform show -json tfplan.binary > tfplan.json 
                         ;;
 
                     "destroy")
-                        /usr/local/bin/terraform destroy -force -var-file="$VAR_FOLDER/terraform.tfvars"
+                        /usr/local/bin/terraform destroy -force
                         ;;
 
                     *)
