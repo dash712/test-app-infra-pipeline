@@ -92,8 +92,6 @@ pipeline {
                     -backend-config="bucket=terraform-state-$ENVIRONMENT-$DEPLOYMENT_REGION" \
                     -backend-config="region=$REGION" \
                     -get=true
-                    /usr/local/bin/terraform plan --out tfplan.binary 
-                    /usr/local/bin/terraform show --json tfplan.binary > tfplan.json
                     case $RUN_TYPE in
 
                     "plan")
@@ -101,8 +99,9 @@ pipeline {
                         ;;
 
                     "apply")
-                        /usr/local/bin/terraform plan -out=tfplan.binary -input=false
-                        /usr/local/bin/terraform show -json tfplan.binary > tfplan.json 
+                        # /usr/local/bin/terraform plan -out=tfplan.binary -input=false
+                        # /usr/local/bin/terraform show -json tfplan.binary > tfplan.json 
+                        /usr/local/bin/terraform apply
                         ;;
 
                     "destroy")
