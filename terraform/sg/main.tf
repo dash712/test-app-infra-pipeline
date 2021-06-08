@@ -2,6 +2,11 @@ provider "aws" {
     region = "us-east-1"
 }
 
+variable "vpc_id" {
+  type = string
+  default = "vpc-e0add29b"
+}
+
 resource "aws_security_group" "palisade-test-sg" {
   name        = "palisade-test-sg"
   description = "test module for palisade"
