@@ -72,7 +72,7 @@ pipeline {
                 // chmod +x terraform/deploy_env/terraform.sh
                 // terraform/deploy_env/terraform.sh $RUN_TYPE $ENVIRONMENT $DEPLOYMENT_REGION $APP_NAME $SG
                 script{
-                    sh'''#!/bin/bash
+                   sh'''#!/bin/bash
                     set -e 
                     # This shell script will prep terraform env, create a tf plan, then call our binary. 
                     # will return failure code if a policy violation is found in upper environments and a warning in dev environment.
@@ -82,29 +82,29 @@ pipeline {
                     DEPLOYMENT_REGION=us-east-1
                     APP_NAME=palisade-test
                     MODULE=sg
-                    VAR-FOLDER=$ENVIRONMENT-$DEPLOYMENT_REGION
+                    VAR_FOLDER="$ENVIRONMENT-$DEPLOYMENT_REGION"
                     KEY="applications/$APP_NAME/$MODULE_TYPE/terraform.tfstate"
-
-                    cd ../$MODULE || exit 1
-                    terraform init \
+                    ls
+                    pwd
+                    cd terraform/$MODULE || exit 1
+                     /usr/local/bin/terraform init \
                     -input=false \
                     -backend=true \
-                    -backend-config "bucket=terraform-state-$ENVIRONMENT-$DEPLOYMENT-REGION" \
-                    -backend-config "region=$REGION"
-                    -backend-config "key=$KEY"
+                    -backend-config="bucket=terraform-state-$ENVIRONMENT-$DEPLOYMENT_REGION" \
+                    -backend-config="region=$REGION" \
                     -get=true
 
-                    terraform plan --out tfplan.binary
-                    terraform show -json tfplan.binary > tfplan.json
+                     /usr/local/bin/terraform plan --out tfplan.binary
+                     /usr/local/bin/terraform show -json tfplan.binary > tfplan.json
 
                     case "$RUN_TYPE" in
                         "plan" )
-                            terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan -input=false;;
+                             /usr/local/bin/terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan -input=false;;
                         "apply" )
-                            terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan.binary -input=false;;
-                            terraform show -json tfplan.binary > tfplan.json 
+                             /usr/local/bin/terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan.binary -input=false;;
+                             /usr/local/bin/terraform show -json tfplan.binary > tfplan.json 
                         "destroy" )
-                            terraform destroy -force -var-file="$VAR_FOLDER/terraform.tfvars";;
+                             /usr/local/bin/terraform destroy -force -var-file="$VAR_FOLDER/terraform.tfvars";;
                         *   )
                             echo "Invalid action"; exit 1;;
                     esac
