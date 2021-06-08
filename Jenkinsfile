@@ -92,19 +92,27 @@ pipeline {
                     -backend-config="bucket=terraform-state-$ENVIRONMENT-$DEPLOYMENT_REGION" \
                     -backend-config="region=$REGION" \
                     -get=true
-
-                    /usr/local/bin/terraform plan --out tfplan.binary
+                    /usr/local/bin/terraform plan --out tfplan.binary 
                     /usr/local/bin/terraform show --json tfplan.binary > tfplan.json
-                    case "$RUN_TYPE" in
-                        "plan" )
-                                /usr/local/bin/terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan -input=false;;
-                        "apply" )
-                                /usr/local/bin/terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan.binary -input=false;;
-                                /usr/local/bin/terraform show -json tfplan.binary > tfplan.json 
-                        "destroy" )
-                                /usr/local/bin/terraform destroy -force -var-file="$VAR_FOLDER/terraform.tfvars";;
-                        *   )
-                            echo "Invalid action"; exit 1;;
+                    case $RUN_TYPE in
+
+                    "plan")
+                        /usr/local/bin/terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan -input=false
+                        ;;
+
+                    "apply")
+                        /usr/local/bin/terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan.binary -input=false
+                        /usr/local/bin/terraform show -json tfplan.binary > tfplan.json 
+                        ;;
+
+                    "destroy")
+                        /usr/local/bin/terraform destroy -force -var-file="$VAR_FOLDER/terraform.tfvars"
+                        ;;
+
+                    *)
+                        echo "Invalid action"
+                        exit 1
+                        ;;
                     esac
                     if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $RUN_TYPE == "apply" && $MODULE == "sg" ]]; then 
                         echo "Running palisade"
