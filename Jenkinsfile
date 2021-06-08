@@ -101,7 +101,7 @@ pipeline {
                     "apply")
                         # /usr/local/bin/terraform plan -out=tfplan.binary -input=false
                         # /usr/local/bin/terraform show -json tfplan.binary > tfplan.json 
-                        /usr/local/bin/terraform apply
+                        /usr/local/bin/terraform apply -auto-approve
                         ;;
 
                     "destroy")
