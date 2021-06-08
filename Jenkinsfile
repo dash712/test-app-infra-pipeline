@@ -44,8 +44,8 @@ pipeline {
                 script{
                     sh'''#!/bin/bash
                     set -e 
-                    chmod +x terraform/deploy_env/terraform.sh
-                    terraform/deploy_env/terraform.sh $RUN_TYPE $ENVIRONMENT $DEPLOYMENT_REGION $APP_NAME ecr
+                    chmod +x ../terraform/deploy_env/terraform.sh
+                    ../terraform/deploy_env/terraform.sh $RUN_TYPE $ENVIRONMENT $DEPLOYMENT_REGION $APP_NAME ecr
                     '''
                 }
             }
