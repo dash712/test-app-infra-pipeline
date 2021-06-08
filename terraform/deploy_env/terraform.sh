@@ -33,7 +33,7 @@ case $RUN_TYPE in
 
         # if palisade returns policy violation; exit 1; else continue to terraform apply 
     else
-        /usr/local/bin/terraform apply
+        /usr/local/bin/terraform apply -auto-approve
     fi 
     ;;
 
