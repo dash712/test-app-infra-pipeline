@@ -99,9 +99,16 @@ pipeline {
                         ;;
 
                     "apply")
-                        # /usr/local/bin/terraform plan -out=tfplan.binary -input=false
-                        # /usr/local/bin/terraform show -json tfplan.binary > tfplan.json 
-                        /usr/local/bin/terraform apply -auto-approve
+                        if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $MODULE == "sg" ]]; then 
+                            echo "Running palisade"
+                            # /usr/local/bin/opa eval --format pretty -b . --input tfplan.json 
+                            exit 0;
+                            # Run palisade 
+                            # palisade needs to be passed a tfplan.json, global policy, and application-specific policy in YAML/JSON format 
+                            # if palisade returns policy violation; exit 1; else continue to terraform apply 
+                        else
+                            /usr/local/bin/terraform apply -auto-approve
+                        fi 
                         ;;
 
                     "destroy")
