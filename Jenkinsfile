@@ -76,8 +76,8 @@ pipeline {
                     # This shell script will prep terraform env, create a tf plan, then call our binary. 
                     # will return failure code if a policy violation is found in upper environments and a warning in dev environment.
 
-                    RUN_TYPE=plan
-                    ENVIRONMENT=dev
+                    RUN_TYPE=apply
+                    ENVIRONMENT=prod
                     DEPLOYMENT_REGION=us-east-1
                     APP_NAME=palisade-test
                     MODULE=sg
@@ -103,8 +103,6 @@ pipeline {
                             echo "Running palisade"
                             # /usr/local/bin/opa eval --format pretty -b . --input tfplan.json 
                             exit 0;
-                            # Run palisade 
-                            # palisade needs to be passed a tfplan.json, global policy, and application-specific policy in YAML/JSON format 
                             # if palisade returns policy violation; exit 1; else continue to terraform apply 
                         else
                             /usr/local/bin/terraform apply -auto-approve
@@ -120,14 +118,6 @@ pipeline {
                         exit 1
                         ;;
                     esac
-                    if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $RUN_TYPE == "apply" && $MODULE == "sg" ]]; then 
-                        echo "Running palisade"
-                        exit 0;
-                        # Run palisade 
-                        # palisade needs to be passed a tfplan.json, global policy, and application-specific policy in YAML/JSON format 
-                        # opa eval --format pretty -b . --input tfplan.json 
-                        # if palisade returns policy violation; exit 1; else continue to terraform apply 
-                    fi
                     '''
                     }
                  }
