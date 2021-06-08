@@ -86,16 +86,15 @@ pipeline {
                     ls
                     pwd
                     cd terraform/$MODULE || exit 1
-                        /usr/local/bin/terraform init \
+                    /usr/local/bin/terraform init \
                     -input=false \
                     -backend=true \
                     -backend-config="bucket=terraform-state-$ENVIRONMENT-$DEPLOYMENT_REGION" \
                     -backend-config="region=$REGION" \
                     -get=true
 
-                        /usr/local/bin/terraform plan --out tfplan.binary
-                        /usr/local/bin/terraform show -json tfplan.binary > tfplan.json
-
+                    /usr/local/bin/terraform plan --out tfplan.binary
+                    /usr/local/bin/terraform show --json tfplan.binary > tfplan.json
                     case "$RUN_TYPE" in
                         "plan" )
                                 /usr/local/bin/terraform plan -var-file="$VAR_FOLDER/terraform.tfvars" -out=tfplan -input=false;;
