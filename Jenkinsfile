@@ -76,7 +76,7 @@ pipeline {
                     # This shell script will prep terraform env, create a tf plan, then call our binary. 
                     # will return failure code if a policy violation is found in upper environments and a warning in dev environment.
                     chmod +x terraform/deploy_env/terraform.sh
-                    terraform/deploy_env/terraform.sh $RUN_TYPE $ENVIRONMENT $DEPLOYMENT_REGION $APP_NAME $SG
+                    terraform/deploy_env/terraform.sh $RUN_TYPE $ENVIRONMENT $DEPLOYMENT_REGION $APP_NAME "SG"
                     '''
                     }
                  }
