@@ -1,0 +1,18 @@
+[
+    {
+        "terraform": [
+            {
+                "aws_security_group": [
+                    {
+                        "direction": "egress",
+                        "fromport": 8080,
+                        "toport" : 8081,
+                        "protocol" : "tcp",
+                        "address" : "${module.core.something}",
+                        "name": "palisade-test-sg"
+                    }
+                ]
+            }
+        ]
+    }
+]

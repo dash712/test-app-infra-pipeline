@@ -102,6 +102,7 @@ pipeline {
                         if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $MODULE == "sg" ]]; then 
                             echo "Running palisade"
                             # /usr/local/bin/opa eval --format pretty -b . --input tfplan.json 
+                            python3 parser.py 
                             exit 0;
                             # if palisade returns policy violation; exit 1; else continue to terraform apply 
                         else
