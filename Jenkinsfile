@@ -108,10 +108,11 @@ pipeline {
                             pip3 install python-hcl2
                             PALISADE_RESULT=$(python3 parser.py)
                             if [[ $PALISADE_RESULT != "Your terraform code is in compliance." ]]; then
-                                echo "\033[31m ${PALISADE_RESULT} \033[0m"
+                                echo "\033[31m${PALISADE_RESULT} \033[0m"
                                 exit 1;
                             else
-                                echo "\033[1;34m ${PALISADE_RESULT} \033[0m"
+                                echo "\033[1;34m${PALISADE_RESULT} \033[0m"
+                                 cd terraform/$MODULE
                                 /usr/local/bin/terraform apply -auto-approve
                             fi 
                             deactivate
