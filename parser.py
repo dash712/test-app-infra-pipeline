@@ -14,7 +14,8 @@ with open('terraform/sg/permissions.json', 'r' ) as local_permissions_file:
 
 security_group_name = resources['resource'][0]['aws_security_group']['palisade-test-sg']['name'][0]
 global_rule_name = permissions[0]['terraform'][0]['aws_security_group'][0]['name']
-local_rule_name = permissions[0]['terraform'][0]['aws_security_group'][0]['name']
+local_rule_name = local_permissions[0]['terraform'][0]['aws_security_group'][0]['name']
+
 if re.match(rf"{global_rule_name}", security_group_name):
     print ("Your terraform code is in compliance.")
 elif re.match(rf"{local_rule_name}", security_group_name):
