@@ -97,12 +97,12 @@ pipeline {
 
                     "apply")
                         if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $MODULE == "sg" ]]; then 
-                            echo "Running palisade"
+                            echo "\033[1;34mRunning palisade\033[0m"
                             # /usr/local/bin/opa eval --format pretty -b . --input tfplan.json 
                             cd ../..
                             python3 -m venv env
                             source env/bin/activate
-                            pip3 install python-hcl2 --quiet
+                            pip3 install python-hcl2 --quiet --disable-pip-version-check
                             PALISADE_RESULT=$(python3 parser.py)
                             if [[ $PALISADE_RESULT != "Your terraform code is in compliance." ]]; then
                                 echo "\033[31m${PALISADE_RESULT} \033[0m"
