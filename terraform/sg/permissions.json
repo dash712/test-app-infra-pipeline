@@ -9,7 +9,7 @@
                         "toport" : 8081,
                         "protocol" : "tcp",
                         "address" : "${module.core.something}",
-                        "name": "palisade-test-sg"
+                        "name": "not-palisade-test-sg"
                     }
                 ]
             }

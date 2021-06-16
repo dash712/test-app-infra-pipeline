@@ -73,9 +73,6 @@ pipeline {
                     script {
                     sh'''#!/bin/bash
                     set -e 
-                    # This shell script will prep terraform env, create a tf plan, then call our binary. 
-                    # will return failure code if a policy violation is found in upper environments and a warning in dev environment.
-
                     RUN_TYPE=apply
                     ENVIRONMENT=prod
                     DEPLOYMENT_REGION=us-east-1
@@ -105,14 +102,14 @@ pipeline {
                             cd ../..
                             python3 -m venv env
                             source env/bin/activate
-                            pip3 install python-hcl2
+                            pip3 install python-hcl2 --quiet
                             PALISADE_RESULT=$(python3 parser.py)
                             if [[ $PALISADE_RESULT != "Your terraform code is in compliance." ]]; then
                                 echo "\033[31m${PALISADE_RESULT} \033[0m"
                                 exit 1;
                             else
                                 echo "\033[1;34m${PALISADE_RESULT} \033[0m"
-                                 cd terraform/$MODULE
+                                cd terraform/$MODULE
                                 /usr/local/bin/terraform apply -auto-approve
                             fi 
                             deactivate
