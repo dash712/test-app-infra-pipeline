@@ -16,7 +16,8 @@ resource "aws_security_group" "palisade-test-sg" {
     from_port   = 0
     to_port     = 8000
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    # cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = [module.local.cps]
   }
 
   egress {

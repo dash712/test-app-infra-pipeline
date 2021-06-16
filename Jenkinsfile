@@ -80,8 +80,6 @@ pipeline {
                     MODULE=sg
                     VAR_FOLDER="$ENVIRONMENT-$DEPLOYMENT_REGION"
                     KEY="applications/$APP_NAME/$MODULE_TYPE/terraform.tfstate"
-                    ls
-                    pwd
                     cd terraform/$MODULE || exit 1
                     /usr/local/bin/terraform init \
                     -input=false \
