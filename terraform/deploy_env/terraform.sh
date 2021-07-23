@@ -26,7 +26,7 @@ case $RUN_TYPE in
     /usr/local/bin/terraform show -json tfplan.binary > tfplan.json
     if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $MODULE == "sg" ]]; then 
         echo "Running palisade"
-        # /usr/local/bin/opa eval --format pretty -b . --input tfplan.json 
+        ../palisade -t "tfplan.json" -d "../policies" 
         exit 0;
         # Run palisade 
         # palisade needs to be passed a tfplan.json, global policy, and application-specific policy in YAML/JSON format 
