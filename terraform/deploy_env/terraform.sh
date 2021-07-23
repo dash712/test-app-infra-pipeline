@@ -15,6 +15,7 @@ cd terraform/$MODULE || exit 1
 -backend-config="region=$REGION" \
 -get=true
 echo "troubleshooting"
+echo $RUN_TYPE
 case $RUN_TYPE in
 
 "plan")
