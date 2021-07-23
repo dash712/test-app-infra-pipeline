@@ -29,7 +29,7 @@ case $RUN_TYPE in
     if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $MODULE == "sg" ]]; then 
         echo "Running palisade"
         pwd
-        ../../palisade -t "tfplan.json" -d "../../policies" 
+        ../../palisade scan -t tfplan.json -d ../../policies
         exit 0;
         # Run palisade 
         # palisade needs to be passed a tfplan.json, global policy, and application-specific policy in YAML/JSON format 
