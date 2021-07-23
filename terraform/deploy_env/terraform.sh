@@ -16,6 +16,7 @@ cd terraform/$MODULE || exit 1
 -get=true
 echo "troubleshooting"
 echo $RUN_TYPE
+echo $ENVIRONMENT
 case $RUN_TYPE in
 
 "plan")
