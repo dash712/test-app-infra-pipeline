@@ -1,7 +1,7 @@
 ---
     PARAMETERS:
       APP_NAME: test-app
-      ENVIRONMENT: dev
+      ENVIRONMENT: prod
       RUN_TYPE: apply 
       DEPLOYMENT_REGION: "us-east-1"
       SG: true
