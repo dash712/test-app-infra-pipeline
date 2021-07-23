@@ -74,6 +74,7 @@ pipeline {
                     sh'''#!/bin/bash
                     set -e 
                     chmod +x terraform/deploy_env/terraform.sh
+                    echo $RUN_TYPE
                     terraform/deploy_env/terraform.sh $RUN_TYPE $ENVIRONMENT $DEPLOYMENT_REGION $APP_NAME sg
                     '''
                     }
