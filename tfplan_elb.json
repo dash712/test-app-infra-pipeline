@@ -1,0 +1,604 @@
+{
+   "format_version":"0.2",
+   "terraform_version":"1.0.1",
+   "variables":{
+      "vpc_id":{
+         "value":"vpc-e0add29b"
+      }
+   },
+   "planned_values":{
+      "root_module":{
+         "resources":[
+            {
+               "address":"aws_lb.test",
+               "mode":"managed",
+               "type":"aws_lb",
+               "name":"test",
+               "provider_name":"registry.terraform.io/hashicorp/aws",
+               "schema_version":0,
+               "values":{
+                  "access_logs":[
+                     {
+                        "bucket":"",
+                        "enabled":false,
+                        "prefix":null
+                     }
+                  ],
+                  "customer_owned_ipv4_pool":null,
+                  "drop_invalid_header_fields":false,
+                  "enable_cross_zone_load_balancing":null,
+                  "enable_deletion_protection":true,
+                  "enable_http2":true,
+                  "idle_timeout":60,
+                  "internal":false,
+                  "load_balancer_type":"application",
+                  "name":"test-lb-tf",
+                  "name_prefix":null,
+                  "tags":null,
+                  "timeouts":null
+               },
+               "sensitive_values":{
+                  "access_logs":[
+                     {
+                        
+                     }
+                  ],
+                  "security_groups":[
+                     
+                  ],
+                  "subnet_mapping":[
+                     
+                  ],
+                  "subnets":[
+                     
+                  ],
+                  "tags_all":{
+                     
+                  }
+               }
+            },
+            {
+               "address":"aws_lb.test_two",
+               "mode":"managed",
+               "type":"aws_lb",
+               "name":"test_two",
+               "provider_name":"registry.terraform.io/hashicorp/aws",
+               "schema_version":0,
+               "values":{
+                  "access_logs":[
+                     {
+                        "bucket":"aws-bucket",
+                        "enabled":true,
+                        "prefix":"test-lb"
+                     }
+                  ],
+                  "customer_owned_ipv4_pool":null,
+                  "drop_invalid_header_fields":false,
+                  "enable_cross_zone_load_balancing":null,
+                  "enable_deletion_protection":true,
+                  "enable_http2":true,
+                  "idle_timeout":60,
+                  "internal":false,
+                  "load_balancer_type":"application",
+                  "name":"test-lb-tf",
+                  "name_prefix":null,
+                  "tags":null,
+                  "timeouts":null
+               },
+               "sensitive_values":{
+                  "access_logs":[
+                     {
+                        
+                     }
+                  ],
+                  "security_groups":[
+                     
+                  ],
+                  "subnet_mapping":[
+                     
+                  ],
+                  "subnets":[
+                     
+                  ],
+                  "tags_all":{
+                     
+                  }
+               }
+            },
+            {
+               "address":"aws_security_group.palisade-test-sg",
+               "mode":"managed",
+               "type":"aws_security_group",
+               "name":"palisade-test-sg",
+               "provider_name":"registry.terraform.io/hashicorp/aws",
+               "schema_version":1,
+               "values":{
+                  "description":"test module for palisade",
+                  "egress":[
+                     {
+                        "cidr_blocks":[
+                           "0.0.0.0/0"
+                        ],
+                        "description":"",
+                        "from_port":0,
+                        "ipv6_cidr_blocks":[
+                           
+                        ],
+                        "prefix_list_ids":[
+                           
+                        ],
+                        "protocol":"tcp",
+                        "security_groups":[
+                           
+                        ],
+                        "self":false,
+                        "to_port":0
+                     }
+                  ],
+                  "ingress":[
+                     {
+                        "cidr_blocks":[
+                           "0.0.0.0/0"
+                        ],
+                        "description":"",
+                        "from_port":0,
+                        "ipv6_cidr_blocks":[
+                           
+                        ],
+                        "prefix_list_ids":[
+                           
+                        ],
+                        "protocol":"tcp",
+                        "security_groups":[
+                           
+                        ],
+                        "self":false,
+                        "to_port":8000
+                     }
+                  ],
+                  "name":"palisade-test-sg",
+                  "revoke_rules_on_delete":false,
+                  "tags":null,
+                  "timeouts":null,
+                  "vpc_id":"vpc-e0add29b"
+               },
+               "sensitive_values":{
+                  "egress":[
+                     {
+                        "cidr_blocks":[
+                           false
+                        ],
+                        "ipv6_cidr_blocks":[
+                           
+                        ],
+                        "prefix_list_ids":[
+                           
+                        ],
+                        "security_groups":[
+                           
+                        ]
+                     }
+                  ],
+                  "ingress":[
+                     {
+                        "cidr_blocks":[
+                           false
+                        ],
+                        "ipv6_cidr_blocks":[
+                           
+                        ],
+                        "prefix_list_ids":[
+                           
+                        ],
+                        "security_groups":[
+                           
+                        ]
+                     }
+                  ],
+                  "tags_all":{
+                     
+                  }
+               }
+            }
+         ]
+      }
+   },
+   "resource_changes":[
+      {
+         "address":"aws_lb.test",
+         "mode":"managed",
+         "type":"aws_lb",
+         "name":"test",
+         "provider_name":"registry.terraform.io/hashicorp/aws",
+         "change":{
+            "actions":[
+               "create"
+            ],
+            "before":null,
+            "after":{
+               "access_logs":[
+                  {
+                     "bucket":"",
+                     "enabled":false,
+                     "prefix":null
+                  }
+               ],
+               "customer_owned_ipv4_pool":null,
+               "drop_invalid_header_fields":false,
+               "enable_cross_zone_load_balancing":null,
+               "enable_deletion_protection":true,
+               "enable_http2":true,
+               "idle_timeout":60,
+               "internal":false,
+               "load_balancer_type":"application",
+               "name":"test-lb-tf",
+               "name_prefix":null,
+               "tags":null,
+               "timeouts":null
+            },
+            "after_unknown":{
+               "access_logs":[
+                  {
+                     
+                  }
+               ],
+               "arn":true,
+               "arn_suffix":true,
+               "dns_name":true,
+               "id":true,
+               "ip_address_type":true,
+               "security_groups":true,
+               "subnet_mapping":true,
+               "subnets":true,
+               "tags_all":true,
+               "vpc_id":true,
+               "zone_id":true
+            },
+            "before_sensitive":false,
+            "after_sensitive":{
+               "access_logs":[
+                  {
+                     
+                  }
+               ],
+               "security_groups":[
+                  
+               ],
+               "subnet_mapping":[
+                  
+               ],
+               "subnets":[
+                  
+               ],
+               "tags_all":{
+                  
+               }
+            }
+         }
+      },
+      {
+         "address":"aws_lb.test_two",
+         "mode":"managed",
+         "type":"aws_lb",
+         "name":"test_two",
+         "provider_name":"registry.terraform.io/hashicorp/aws",
+         "change":{
+            "actions":[
+               "create"
+            ],
+            "before":null,
+            "after":{
+               "access_logs":[
+                  {
+                     "bucket":"aws-bucket",
+                     "enabled":true,
+                     "prefix":"test-lb"
+                  }
+               ],
+               "customer_owned_ipv4_pool":null,
+               "drop_invalid_header_fields":false,
+               "enable_cross_zone_load_balancing":null,
+               "enable_deletion_protection":true,
+               "enable_http2":true,
+               "idle_timeout":60,
+               "internal":false,
+               "load_balancer_type":"application",
+               "name":"test-lb-tf",
+               "name_prefix":null,
+               "tags":null,
+               "timeouts":null
+            },
+            "after_unknown":{
+               "access_logs":[
+                  {
+                     
+                  }
+               ],
+               "arn":true,
+               "arn_suffix":true,
+               "dns_name":true,
+               "id":true,
+               "ip_address_type":true,
+               "security_groups":true,
+               "subnet_mapping":true,
+               "subnets":true,
+               "tags_all":true,
+               "vpc_id":true,
+               "zone_id":true
+            },
+            "before_sensitive":false,
+            "after_sensitive":{
+               "access_logs":[
+                  {
+                     
+                  }
+               ],
+               "security_groups":[
+                  
+               ],
+               "subnet_mapping":[
+                  
+               ],
+               "subnets":[
+                  
+               ],
+               "tags_all":{
+                  
+               }
+            }
+         }
+      },
+      {
+         "address":"aws_security_group.palisade-test-sg",
+         "mode":"managed",
+         "type":"aws_security_group",
+         "name":"palisade-test-sg",
+         "provider_name":"registry.terraform.io/hashicorp/aws",
+         "change":{
+            "actions":[
+               "create"
+            ],
+            "before":null,
+            "after":{
+               "description":"test module for palisade",
+               "egress":[
+                  {
+                     "cidr_blocks":[
+                        "0.0.0.0/0"
+                     ],
+                     "description":"",
+                     "from_port":0,
+                     "ipv6_cidr_blocks":[
+                        
+                     ],
+                     "prefix_list_ids":[
+                        
+                     ],
+                     "protocol":"tcp",
+                     "security_groups":[
+                        
+                     ],
+                     "self":false,
+                     "to_port":0
+                  }
+               ],
+               "ingress":[
+                  {
+                     "cidr_blocks":[
+                        "0.0.0.0/0"
+                     ],
+                     "description":"",
+                     "from_port":0,
+                     "ipv6_cidr_blocks":[
+                        
+                     ],
+                     "prefix_list_ids":[
+                        
+                     ],
+                     "protocol":"tcp",
+                     "security_groups":[
+                        
+                     ],
+                     "self":false,
+                     "to_port":8000
+                  }
+               ],
+               "name":"palisade-test-sg",
+               "revoke_rules_on_delete":false,
+               "tags":null,
+               "timeouts":null,
+               "vpc_id":"vpc-e0add29b"
+            },
+            "after_unknown":{
+               "arn":true,
+               "egress":[
+                  {
+                     "cidr_blocks":[
+                        false
+                     ],
+                     "ipv6_cidr_blocks":[
+                        
+                     ],
+                     "prefix_list_ids":[
+                        
+                     ],
+                     "security_groups":[
+                        
+                     ]
+                  }
+               ],
+               "id":true,
+               "ingress":[
+                  {
+                     "cidr_blocks":[
+                        false
+                     ],
+                     "ipv6_cidr_blocks":[
+                        
+                     ],
+                     "prefix_list_ids":[
+                        
+                     ],
+                     "security_groups":[
+                        
+                     ]
+                  }
+               ],
+               "name_prefix":true,
+               "owner_id":true,
+               "tags_all":true
+            },
+            "before_sensitive":false,
+            "after_sensitive":{
+               "egress":[
+                  {
+                     "cidr_blocks":[
+                        false
+                     ],
+                     "ipv6_cidr_blocks":[
+                        
+                     ],
+                     "prefix_list_ids":[
+                        
+                     ],
+                     "security_groups":[
+                        
+                     ]
+                  }
+               ],
+               "ingress":[
+                  {
+                     "cidr_blocks":[
+                        false
+                     ],
+                     "ipv6_cidr_blocks":[
+                        
+                     ],
+                     "prefix_list_ids":[
+                        
+                     ],
+                     "security_groups":[
+                        
+                     ]
+                  }
+               ],
+               "tags_all":{
+                  
+               }
+            }
+         }
+      }
+   ],
+   "configuration":{
+      "provider_config":{
+         "aws":{
+            "name":"aws",
+            "expressions":{
+               "region":{
+                  "constant_value":"us-east-1"
+               }
+            }
+         }
+      },
+      "root_module":{
+         "resources":[
+            {
+               "address":"aws_lb.test",
+               "mode":"managed",
+               "type":"aws_lb",
+               "name":"test",
+               "provider_config_key":"aws",
+               "expressions":{
+                  "access_logs":[
+                     {
+                        "bucket":{
+                           "constant_value":"aws-bucket"
+                        },
+                        "enabled":{
+                           "constant_value":false
+                        },
+                        "prefix":{
+                           "constant_value":"test-lb"
+                        }
+                     }
+                  ],
+                  "enable_deletion_protection":{
+                     "constant_value":true
+                  },
+                  "internal":{
+                     "constant_value":false
+                  },
+                  "load_balancer_type":{
+                     "constant_value":"application"
+                  },
+                  "name":{
+                     "constant_value":"test-lb-tf"
+                  }
+               },
+               "schema_version":0
+            },
+            {
+               "address":"aws_lb.test_two",
+               "mode":"managed",
+               "type":"aws_lb",
+               "name":"test_two",
+               "provider_config_key":"aws",
+               "expressions":{
+                  "access_logs":[
+                     {
+                        "bucket":{
+                           "constant_value":"aws-bucket"
+                        },
+                        "enabled":{
+                           "constant_value":true
+                        },
+                        "prefix":{
+                           "constant_value":"test-lb"
+                        }
+                     }
+                  ],
+                  "enable_deletion_protection":{
+                     "constant_value":true
+                  },
+                  "internal":{
+                     "constant_value":false
+                  },
+                  "load_balancer_type":{
+                     "constant_value":"application"
+                  },
+                  "name":{
+                     "constant_value":"test-lb-tf"
+                  }
+               },
+               "schema_version":0
+            },
+            {
+               "address":"aws_security_group.palisade-test-sg",
+               "mode":"managed",
+               "type":"aws_security_group",
+               "name":"palisade-test-sg",
+               "provider_config_key":"aws",
+               "expressions":{
+                  "description":{
+                     "constant_value":"test module for palisade"
+                  },
+                  "name":{
+                     "constant_value":"palisade-test-sg"
+                  },
+                  "vpc_id":{
+                     "references":[
+                        "var.vpc_id"
+                     ]
+                  }
+               },
+               "schema_version":1
+            }
+         ],
+         "variables":{
+            "vpc_id":{
+               "default":"vpc-e0add29b"
+            }
+         }
+      }
+   }
+}
