@@ -1,6 +1,6 @@
 #!/bin/bash
 RUN_TYPE=$(echo "$1")
-ENVIRONMENT=$(echo "$2" | tr '[:upper]' '[:lower]')
+ENVIRONMENT=$(echo "$2")
 DEPLOYMENT_REGION=$(echo "$3" | tr '[:upper]' '[:lower]')
 APP_NAME=$(echo "$4" | tr '[:upper]' '[:lower]')
 MODULE=$(echo "$5" | tr '[:upper]' '[:lower]')
