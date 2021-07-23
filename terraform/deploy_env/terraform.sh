@@ -1,5 +1,5 @@
 #!/bin/bash
-RUN_TYPE=$(echo "$1" | tr '[:upper]' '[:lower]')
+RUN_TYPE=$(echo "$1")
 ENVIRONMENT=$(echo "$2" | tr '[:upper]' '[:lower]')
 DEPLOYMENT_REGION=$(echo "$3" | tr '[:upper]' '[:lower]')
 APP_NAME=$(echo "$4" | tr '[:upper]' '[:lower]')
