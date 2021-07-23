@@ -14,7 +14,7 @@ cd terraform/$MODULE || exit 1
 -backend-config="bucket=terraform-state-$ENVIRONMENT-$DEPLOYMENT_REGION" \
 -backend-config="region=$REGION" \
 -get=true
-
+echo "troubleshooting"
 case $RUN_TYPE in
 
 "plan")
