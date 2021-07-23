@@ -2,7 +2,7 @@
     PARAMETERS:
       APP_NAME: test-app
       ENVIRONMENT: dev
-      RUN_TYPE: plan 
+      RUN_TYPE: apply 
       DEPLOYMENT_REGION: "us-east-1"
       SG: true
       RDS: false

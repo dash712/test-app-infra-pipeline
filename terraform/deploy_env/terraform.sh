@@ -20,8 +20,8 @@ case $RUN_TYPE in
 "plan")
     /usr/local/bin/terraform plan -out=tfplan -input=false
     ;;
-
 "apply")
+    echo "troubleshooting"
     /usr/local/bin/terraform plan -out=tfplan.binary -input=false
     /usr/local/bin/terraform show -json tfplan.binary > tfplan.json
     if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $MODULE == "sg" ]]; then 
@@ -36,7 +36,6 @@ case $RUN_TYPE in
         /usr/local/bin/terraform apply -auto-approve
     fi 
     ;;
-
 "destroy")
     /usr/local/bin/terraform destroy -force
     ;;
