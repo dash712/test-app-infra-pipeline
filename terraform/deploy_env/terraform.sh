@@ -14,27 +14,26 @@ cd terraform/$MODULE || exit 1
 -backend-config="bucket=terraform-state-$ENVIRONMENT-$DEPLOYMENT_REGION" \
 -backend-config="region=$REGION" \
 -get=true
-echo "troubleshooting"
-echo $RUN_TYPE
-echo $ENVIRONMENT
+
 case $RUN_TYPE in
 
 "plan")
     /usr/local/bin/terraform plan -out=tfplan -input=false
     ;;
 "apply")
-    echo "troubleshooting"
     /usr/local/bin/terraform plan -out=tfplan.binary -input=false
     /usr/local/bin/terraform show -json tfplan.binary > tfplan.json
     if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $MODULE == "sg" ]]; then 
-        echo "Running palisade"
-        pwd
-        ../../palisade scan -t tfplan.json -d ../../policies
+        echo "\033[1;34mRunning palisade\033[0m"
+        palisade_results=$(../../palisade scan -t tfplan.json -d ../../policies)
+        if [[ $palisade_results == "No violations found." ]]; then
+            echo "\033[31m$palisade_results\033[0m"
+            /usr/local/bin/terraform apply -auto-approve
+        else
+            echo "\033[1;34m$palisade_results\033[0m"
+            exit 1;
+        fi
         exit 0;
-        # Run palisade 
-        # palisade needs to be passed a tfplan.json, global policy, and application-specific policy in YAML/JSON format 
-
-        # if palisade returns policy violation; exit 1; else continue to terraform apply 
     else
         /usr/local/bin/terraform apply -auto-approve
     fi 
