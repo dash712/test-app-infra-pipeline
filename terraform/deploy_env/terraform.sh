@@ -27,7 +27,7 @@ case $RUN_TYPE in
         echo "\033[1;34mRunning palisade\033[0m"
         palisade_results=$(../../palisade scan -t tfplan.json -d ../../policies)
         if [[ $palisade_results == "No violations found." ]]; then
-            printf "\033[31m$palisade_results\033[0m\n"
+            printf "\e033[31m$palisade_results\e033[0m\n"
             /usr/local/bin/terraform apply -auto-approve
         else
             echo "\033[1;34m$palisade_results\033[0m"
