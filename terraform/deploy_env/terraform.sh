@@ -24,13 +24,13 @@ case $RUN_TYPE in
     /usr/local/bin/terraform plan -out=tfplan.binary -input=false
     /usr/local/bin/terraform show -json tfplan.binary > tfplan.json
     if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $MODULE == "sg" ]]; then 
-        printf "\e033[1;34mRunning palisade\e033[0m\n"
+        printf "Running palisade"
         palisade_results=$(../../palisade scan -t tfplan.json -d ../../policies)
         if [[ $palisade_results == "No violations found." ]]; then
-            printf "\e033[31m$palisade_results\e033[0m\n"
+            printf "$palisade_results"
             /usr/local/bin/terraform apply -auto-approve
         else
-            echo "\033[1;34m$palisade_results\033[0m"
+            echo "$palisade_results"
             exit 1;
         fi
         exit 0;
