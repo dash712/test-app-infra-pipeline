@@ -25,7 +25,8 @@ case $RUN_TYPE in
     /usr/local/bin/terraform show -json tfplan.binary > tfplan.json
     if [[ ($ENVIRONMENT == "uat" || $ENVIRONMENT == "prod") && $MODULE == "sg" ]]; then 
         printf "Running palisade"
-        palisade_results=$(../../palisade scan -t tfplan.json -d ../../policies)
+        # palisade_results=$(../../palisade scan -t tfplan.json -d ../../policies)
+        palisade_results=$(../../palisade scan -t tfplan.json -d ../../policies -e ../../exception/sample-exception.json)
         if [[ $palisade_results == "No violations found." ]]; then
             printf "$palisade_results"
             /usr/local/bin/terraform apply -auto-approve
