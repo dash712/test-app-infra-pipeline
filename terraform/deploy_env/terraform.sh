@@ -28,7 +28,7 @@ case $RUN_TYPE in
         # palisade_results=$(../../palisade scan -t tfplan.json -d ../../policies)
         palisade_results=$(../../palisade scan -t tfplan.json -d ../../policies -e ../../exception/sample-exception.json)
         if [[ $palisade_results == "No violations found." ]]; then
-            printf "$palisade_results"
+            printf "$palisade_results \n"
             /usr/local/bin/terraform apply -auto-approve
         else
             echo "$palisade_results"
