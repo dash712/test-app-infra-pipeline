@@ -1,3 +1,6 @@
 [
-    "ssh_access"
+    "ssh_access",
+    "allowed_resources",
+    "elb_access_logging_disabled",
+    "security_group_allow"
 ]
