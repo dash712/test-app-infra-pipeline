@@ -51,3 +51,7 @@
                         exit 1
                         ;;
                     esac
+
+                        "allowed_resources",
+    "elb_access_logging_disabled",
+    "security_group_allow",
